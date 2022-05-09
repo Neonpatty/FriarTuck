@@ -53,26 +53,26 @@ public class CameraCycle : MonoBehaviour
         }
 
         //If Q button is pressed change to next camera in array
-        //if (Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    currentCamIndex--;
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            currentCamIndex--;
 
-        //    //Sets camera at current index to inactive, and sets next camera in index to active
-        //    if (currentCamIndex < cams.Length)
-        //    {
-        //        cams[currentCamIndex + 1].gameObject.SetActive(false);
-        //        cams[currentCamIndex].gameObject.SetActive(true);
-        //        Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + "is active");
-        //    }
-        //    //When you reach the end of array, go back to beginning
-        //    else
-        //    {
-        //        cams[currentCamIndex - 1].gameObject.SetActive(false);
-        //        currentCamIndex = cams.Length - 1;
-        //        cams[currentCamIndex].gameObject.SetActive(true);
-        //        Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + "is active");
-        //    }
-        //}
+            //Sets camera at current index to inactive, and sets next camera in index to active
+            if (currentCamIndex < cams.Length)
+            {
+                cams[currentCamIndex + 1].gameObject.SetActive(false);
+                cams[currentCamIndex].gameObject.SetActive(true);
+                Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + "is active");
+            }
+            //When you reach the end of array, go back to beginning
+            else
+            {
+                cams[currentCamIndex + 1].gameObject.SetActive(false);
+                currentCamIndex = cams.Length - 1;
+                cams[currentCamIndex].gameObject.SetActive(true);
+                Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + "is active");
+            }
+        }
     }
 
     void SetActiveCamOnStartUp()

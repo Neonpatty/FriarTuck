@@ -8,8 +8,16 @@ public class AgentController : MonoBehaviour
     //VARS
     public NavMeshAgent agent;
     public GameObject targetDes;
+    public Animator playerAnimator;
+
     // Update is called once per frame
     void Update()
+    {
+        PlayerMovement();
+        PlayerAnimations();
+    }
+
+    void PlayerMovement()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -22,6 +30,17 @@ public class AgentController : MonoBehaviour
                 agent.SetDestination(hitPoint.point);
             }
         }
+    }
 
+    void PlayerAnimations()
+    {
+        if(agent.velocity != Vector3.zero)
+        {
+            playerAnimator.SetBool("isWalking", true);
+        }
+        else if(agent.velocity == Vector3.zero)
+        {
+            playerAnimator.SetBool("isWalking", false);
+        }
     }
 }
