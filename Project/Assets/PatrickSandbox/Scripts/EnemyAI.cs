@@ -6,16 +6,20 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     //VARS
-    public Transform[] targets;
-    public NavMeshAgent enemey;
-    public string waypointTag;
+    public List<Transform> targets;
+    public string wayPointTag;
 
+    [SerializeField] private NavMeshAgent enemy;
     private int currentTarget;
     private bool isTraveling = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag(wayPointTag))
+        {
+            targets.Add(go.transform);
+        }
         SetDestination();
     }
 
@@ -27,7 +31,7 @@ public class EnemyAI : MonoBehaviour
 
     void Patrolling()
     {
-        if(isTraveling && enemey.remainingDistance <= 1.0f)
+        if(isTraveling && enemy.remainingDistance <= 1.0f)
         {
             isTraveling = false;
             NewDestination();
@@ -40,13 +44,13 @@ public class EnemyAI : MonoBehaviour
         if(targets != null)
         {
             Vector3 destination = targets[currentTarget].transform.position;
-            enemey.SetDestination(destination);
+            enemy.SetDestination(destination);
             isTraveling = true;
         }
     }
     
     void NewDestination()
     {
-        currentTarget = (currentTarget + 1) % targets.Length;
+        currentTarget = (currentTarget + 1) % targets.Count;
     }
 }
