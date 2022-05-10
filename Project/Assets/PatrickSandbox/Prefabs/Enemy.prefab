@@ -1003,6 +1003,7 @@ GameObject:
   - component: {fileID: 1981479370539487470}
   - component: {fileID: 2969247856217821321}
   - component: {fileID: 2969247856217821320}
+  - component: {fileID: 420730860015282053}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1036,7 +1037,7 @@ Animator:
   m_GameObject: {fileID: 5103806004639354926}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: dae1b2a630c2103408eac1778b720b71, type: 3}
-  m_Controller: {fileID: 9100000, guid: 75cabacce08bf8742838e3b2c01b2166, type: 2}
+  m_Controller: {fileID: 9100000, guid: d05c8a7b04a29b8468ab0e8d5c6515f8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1084,7 +1085,30 @@ MonoBehaviour:
   enemeyAni: {fileID: 1981479370539487470}
   enemy: {fileID: 2969247856217821321}
   totalWaitTime: 3
+  maxDetectTime: 2
   patrolWaiting: 1
+--- !u!114 &420730860015282053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5103806004639354926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbee5aa1688dfe64d8445ef285e093b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 7
+  angel: 90
+  agentRef: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 256
+  agentSeen: 0
 --- !u!1 &5145441321660176951
 GameObject:
   m_ObjectHideFlags: 0

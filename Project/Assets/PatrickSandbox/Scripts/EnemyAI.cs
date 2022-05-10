@@ -12,9 +12,11 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private NavMeshAgent enemy;
     [SerializeField] private float totalWaitTime;
+    [SerializeField] private float maxDetectTime;
     [SerializeField] private bool patrolWaiting = false;
     private EnemyFOV eF;
     private float waitTimer;
+    private float detectTimer;
     private int currentTarget;
     private bool isTraveling = false;
     private bool waiting = false;
@@ -39,25 +41,48 @@ public class EnemyAI : MonoBehaviour
         Patrolling();
         Waiting();
         AgentSeen();
+        ChaseAgent();
         PlayerAnimations();
     }
 
     void Patrolling()
     {
-        if(isTraveling && enemy.remainingDistance <= 1.0f && (!chaseAgent))
+        if (!chaseAgent)
         {
-            isTraveling = false;
+            if (isTraveling && enemy.remainingDistance <= 1.0f)
+            {
+                isTraveling = false;
 
-            if (patrolWaiting)
-            {
-                waiting = true;
-                waitTimer = 0f;
+                if (patrolWaiting)
+                {
+                    waiting = true;
+                    waitTimer = 0f;
+                }
+                else
+                {
+                    NewDestination();
+                    SetDestination();
+                }
             }
-            else
+        }
+    }
+
+    void ChaseAgent()
+    {
+        if (chaseAgent)
+        {
+            detectTimer += Time.deltaTime;
+                
+            if (detectTimer >= maxDetectTime)
             {
-                NewDestination();
+                SetAgentDestination();
+            }
+            else if (!chaseAgent)
+            {
+                isTraveling = false;
                 SetDestination();
             }
+
         }
     }
 
@@ -84,6 +109,7 @@ public class EnemyAI : MonoBehaviour
             Vector3 destination = targets[currentTarget].transform.position;
             enemy.SetDestination(destination);
             isTraveling = true;
+            detectTimer = 0f;
         }
     }
 
@@ -94,6 +120,10 @@ public class EnemyAI : MonoBehaviour
             Vector3 destination = eF.agentRef.transform.position;
             enemy.SetDestination(destination);
             isTraveling = true;
+        }
+        else
+        {
+            SetDestination();
         }
     }
     
@@ -119,6 +149,10 @@ public class EnemyAI : MonoBehaviour
         if(eF.agentSeen)
         {
             chaseAgent = true;
+        }
+        else
+        {
+            chaseAgent=false;
         }
     }
 }
