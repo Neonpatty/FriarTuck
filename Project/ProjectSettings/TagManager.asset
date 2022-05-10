@@ -6,16 +6,17 @@ TagManager:
   tags:
   - Enemy2
   - Enemy1
+  - Agent
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Agent
   - Water
   - UI
   - Waypoint
-  - 
-  - 
+  - Enemy
+  - Enviroment
   - 
   - 
   - 
