@@ -40,7 +40,7 @@ public class Interactions : MonoBehaviour
             {
                 interacting = true;
                 dropdownMenu.SetActive(true);
-                dropdownMenu.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                dropdownMenu.transform.position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
             }
         }
         else if(Input.GetMouseButtonDown(1) && interacting)
