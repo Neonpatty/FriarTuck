@@ -7,6 +7,7 @@ TagManager:
   - Enemy2
   - Enemy1
   - Agent
+  - Interactable
   layers:
   - Default
   - TransparentFX

@@ -8,11 +8,11 @@ public class Interactions : MonoBehaviour
 {
     //VARS
     public GameObject dropdownMenu;
+    public GameObject buttonOutline;
 
     [SerializeField] private GameObject interObj;
     private bool interacting = false;
     private RaycastHit hitPoint;
-    private Vector3 screenPoint;
 
 
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class Interactions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ClickToOpen();
+        ClickToOpen(); 
     }
 
     void ClickToOpen()
@@ -34,14 +34,13 @@ public class Interactions : MonoBehaviour
 
         if (hitPoint.collider.tag == "Interactable")
         {
-
-            Debug.Log("You can hack");
+            buttonOutline.GetComponent<Outline>().enabled = true;
 
             if (Input.GetMouseButtonDown(1) && !interacting)
             {
                 interacting = true;
                 dropdownMenu.SetActive(true);
-                dropdownMenu.transform.position = Camera.main.ScreenToWorldPoint(screenPoint);
+                dropdownMenu.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
         }
         else if(Input.GetMouseButtonDown(1) && interacting)
@@ -49,16 +48,24 @@ public class Interactions : MonoBehaviour
             interacting = false;
             dropdownMenu.SetActive(false);
         }
+        else
+        {
+            buttonOutline.GetComponent<Outline>().enabled = false;
+            return;
+        }
 
     }
 
-    void OpenDropdownMenu()
+    public void OnMouseOver(Collider collider)
     {
-        Object.Instantiate<GameObject>(dropdownMenu);
-    }
-
-    private void OnGUI()
-    {
-        
+        if(collider.gameObject.tag == "Interactable")
+        {
+            buttonOutline.GetComponent<Outline>().enabled = true;
+            Debug.Log("Hello");
+        }
+        else
+        {
+            buttonOutline.GetComponent<Outline>().enabled = false;
+        }
     }
 }
