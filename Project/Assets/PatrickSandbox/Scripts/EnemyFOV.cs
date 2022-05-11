@@ -48,9 +48,9 @@ public class EnemyFOV : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                    agentSeen = true;
-                else
                     agentSeen = false;
+                else
+                    agentSeen = true;
             }
             else
                 agentSeen = false;
