@@ -12,6 +12,7 @@ public class AgentController : MonoBehaviour
     public Animator playerAnimator;
 
     [SerializeField] private Transform visualTransform;
+    
     private RaycastHit hitPoint;
     private LineRenderer pathMarker;
     private bool isSelected = false;
@@ -30,6 +31,7 @@ public class AgentController : MonoBehaviour
     {
         PlayerMovement();
         PlayerAnimations();
+        Deselect();
     }
 
     void PlayerMovement()
@@ -115,6 +117,21 @@ public class AgentController : MonoBehaviour
         isSelected = true;
         gameObject.GetComponent<Outline>().enabled = true;
         aS.SelectedAgent(gameObject);
+    }
+
+    public void Deselect()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if(aS.selectedAgent != null)
+            {
+                aS.DeselectAgent();
+            }
+            else
+            {
+                Debug.Log("No Agent Selected.");
+            }
+        }
     }
 
     public void DeselectAgent()
