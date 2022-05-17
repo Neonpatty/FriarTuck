@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DoorInteraction : MonoBehaviour
+public class CameraInteraction : MonoBehaviour
 {
     //VARS
     public GameObject dropdownMenu;
@@ -12,6 +12,7 @@ public class DoorInteraction : MonoBehaviour
     [SerializeField] private GameObject interObj;
     [SerializeField] private Transform buttonParent;
     [SerializeField] private CameraCycle cC;
+    [SerializeField] private CamsMenu cM;
 
     private GameObject button;
     private bool interacting = false;
@@ -28,7 +29,7 @@ public class DoorInteraction : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hitPoint);
 
-        if (hitPoint.collider.tag == "DoorInteract")
+        if (hitPoint.collider.tag == "CameraInteract")
         {
             this.gameObject.GetComponent<Outline>().enabled = true;
 
@@ -59,13 +60,13 @@ public class DoorInteraction : MonoBehaviour
 
     public void DoorHackSuccess()
     {
-        if (interObj.tag == "Door")
+        if (interObj.tag == "MainCamera")
         {
-            Animator ani = interObj.GetComponent<Animator>();
-            if (ani.GetBool("Hacked") == false)
-                ani.SetBool("Hacked", true);
-            else
-                ani.SetBool("Hacked", false);
+            interObj.AddComponent<Camera>();
+            Camera cam = (Camera)interObj.GetComponent<Camera>();
+            cC.cams.Add(cam);
+            cC.SetActiveCamOnStartUp();
+            cM.UpdateCams();
         }
 
         interacting = false;
