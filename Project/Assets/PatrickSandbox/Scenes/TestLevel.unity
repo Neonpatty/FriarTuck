@@ -5036,7 +5036,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &423367384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8171,10 +8171,6 @@ PrefabInstance:
       propertyPath: clickMarker
       value: 
       objectReference: {fileID: 1115886010}
-    - target: {fileID: 2960566331075008974, guid: 2c872f6d6c547eb4bbb60efff16f0ed1, type: 3}
-      propertyPath: block.m_Bits
-      value: 32
-      objectReference: {fileID: 0}
     - target: {fileID: 2960566331075008974, guid: 2c872f6d6c547eb4bbb60efff16f0ed1, type: 3}
       propertyPath: visualTransform
       value: 
