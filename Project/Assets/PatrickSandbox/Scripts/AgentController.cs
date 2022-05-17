@@ -41,7 +41,7 @@ public class AgentController : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hitPoint, Mathf.Infinity, block))
+            if (Physics.Raycast(ray, out hitPoint))
             {
                 agent.SetDestination(hitPoint.point);
                 ClickMarkerActive();

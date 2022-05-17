@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Interactions : MonoBehaviour
+public class DoorInteraction : MonoBehaviour
 {
     //VARS
     public GameObject dropdownMenu;
@@ -12,7 +12,7 @@ public class Interactions : MonoBehaviour
     [SerializeField] private GameObject interObj;
     [SerializeField] private Transform buttonParent;
     [SerializeField] private CameraCycle cC;
-    
+
     private GameObject button;
     private bool interacting = false;
     private RaycastHit hitPoint;
@@ -30,7 +30,7 @@ public class Interactions : MonoBehaviour
 
         if (hitPoint.collider.tag == "Interactable")
         {
-            gameObject.GetComponent<Outline>().enabled = true;
+            this.gameObject.GetComponent<Outline>().enabled = true;
 
             if (Input.GetMouseButtonDown(1) && !interacting)
             {
@@ -42,7 +42,7 @@ public class Interactions : MonoBehaviour
                 //dropdownMenu.GetComponent<RectTransform>().position = Camera.main.ScreenToViewportPoint(Input.mousePosition.x,Input.mousePosition.y);
             }
         }
-        else if(Input.GetMouseButtonDown(1) && interacting)
+        else if (Input.GetMouseButtonDown(1) && interacting)
         {
             interacting = false;
             dropdownMenu.SetActive(false);
@@ -50,7 +50,7 @@ public class Interactions : MonoBehaviour
         }
         else
         {
-            gameObject.GetComponent<Outline>().enabled = false;
+            this.gameObject.GetComponent<Outline>().enabled = false;
             Debug.Log("No Interactable");
             return;
         }
@@ -59,26 +59,13 @@ public class Interactions : MonoBehaviour
 
     public void DoorHackSuccess()
     {
-        if(interObj.tag == "Door")
+        if (interObj.tag == "Door")
         {
             Animator ani = interObj.GetComponent<Animator>();
             if (ani.GetBool("Hacked") == false)
                 ani.SetBool("Hacked", true);
             else
                 ani.SetBool("Hacked", false);
-        }
-
-        if (interObj.tag == "MainCamera")
-        {
-            if(interObj.GetComponent<Camera>() == false)
-            {
-                interObj.AddComponent<Camera>();
-                cC.cams.Add(interObj.GetComponent<Camera>());
-            }
-            else
-            {
-                Debug.Log("Already Hacked");
-            }
         }
 
         interacting = false;
