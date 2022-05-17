@@ -10,6 +10,7 @@ public class AgentController : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject clickMarker;
     public Animator playerAnimator;
+    public LayerMask block;
 
     [SerializeField] private Transform visualTransform;
     
@@ -40,7 +41,7 @@ public class AgentController : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hitPoint))
+            if (Physics.Raycast(ray, out hitPoint, Mathf.Infinity, block))
             {
                 agent.SetDestination(hitPoint.point);
                 ClickMarkerActive();

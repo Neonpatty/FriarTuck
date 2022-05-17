@@ -39,7 +39,7 @@ public class Interactions : MonoBehaviour
                 button = Instantiate(buttonPrefab);
                 button.transform.SetParent(buttonParent);
                 button.GetComponent<Button>().onClick.AddListener(DoorHackSuccess);
-                //dropdownMenu.transform.position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+                //dropdownMenu.GetComponent<RectTransform>().position = Camera.main.ScreenToViewportPoint(Input.mousePosition.x,Input.mousePosition.y);
             }
         }
         else if(Input.GetMouseButtonDown(1) && interacting)
@@ -51,6 +51,7 @@ public class Interactions : MonoBehaviour
         else
         {
             gameObject.GetComponent<Outline>().enabled = false;
+            Debug.Log("No Interactable");
             return;
         }
 

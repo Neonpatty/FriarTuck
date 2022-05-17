@@ -7,7 +7,7 @@ public class CameraCycle : MonoBehaviour
     //VARS
     public List<Camera> cams;
     public Camera[] cameras;
-    private int currentCamIndex;
+    public int currentCamIndex;
 
     //Awake is called before start methods
     void Awake()
@@ -39,7 +39,7 @@ public class CameraCycle : MonoBehaviour
             {
                 cams[currentCamIndex - 1].gameObject.SetActive(false);
                 cams[currentCamIndex].gameObject.SetActive(true);
-                Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + "is active");
+                Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + " is active");
             }
             //When you reach the end of array, go back to beginning
             else
@@ -47,7 +47,7 @@ public class CameraCycle : MonoBehaviour
                 cams[currentCamIndex - 1].gameObject.SetActive(false);
                 currentCamIndex = 0;
                 cams[currentCamIndex].gameObject.SetActive(true);
-                Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + "is active");
+                Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + " is active");
             }
         }
 
@@ -61,7 +61,7 @@ public class CameraCycle : MonoBehaviour
             {
                 cams[currentCamIndex + 1].gameObject.SetActive(false);
                 cams[currentCamIndex].gameObject.SetActive(true);
-                Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + "is active");
+                Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + " is active");
             }
             //When you reach the end of array, go back to beginning
             else
@@ -69,7 +69,7 @@ public class CameraCycle : MonoBehaviour
                 cams[currentCamIndex + 1].gameObject.SetActive(false);
                 currentCamIndex = cams.Count - 1;
                 cams[currentCamIndex].gameObject.SetActive(true);
-                Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + "is active");
+                Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + " is active");
             }
         }
     }
@@ -88,7 +88,7 @@ public class CameraCycle : MonoBehaviour
         if (cams.Count > 0)
         {
             cams[0].gameObject.SetActive(true);
-            Debug.Log("Camera:" + cams[0].GetComponent<Camera>().name + "is active");
+            Debug.Log("Camera:" + cams[0].GetComponent<Camera>().name + " is active");
         }
     }
 
