@@ -92,6 +92,24 @@ public class CameraCycle : MonoBehaviour
         }
     }
 
+    public void ResetCameras()
+    {
+        currentCamIndex = 0;
+
+        //Turn off all cameras, except for first one in array
+        for (int i = 1; i < cams.Count; i++)
+        {
+            cams[i].gameObject.SetActive(false);
+        }
+
+        //If any cameras were added to array, enable the first one
+        if (cams.Count > 0)
+        {
+            cams[cams.Count - 1].gameObject.SetActive(true);
+            Debug.Log("Camera:" + cams[0].GetComponent<Camera>().name + " is active");
+        }
+    }
+
     public void AddCamera()
     {
         cameras = Camera.allCameras;
