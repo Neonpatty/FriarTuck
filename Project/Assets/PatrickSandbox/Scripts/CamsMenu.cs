@@ -13,6 +13,11 @@ public class CamsMenu : MonoBehaviour
 
     private int camIndex = 0;
 
+    private void Awake()
+    {
+            
+    }
+
     // Start is called before the first frame update
     void Start()
     {

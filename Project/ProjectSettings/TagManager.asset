@@ -11,6 +11,7 @@ TagManager:
   - Door
   - DoorInteract
   - CameraInteract
+  - Enemies
   layers:
   - Default
   - TransparentFX
