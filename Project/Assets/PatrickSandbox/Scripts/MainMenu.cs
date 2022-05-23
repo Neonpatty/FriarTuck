@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOver : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
-    public void ResetLevel()
-    {
-        SceneManager.LoadScene("TestLevel");
-    }
-
     public void LoadLevel()
     {
         SceneManager.LoadScene(1);
@@ -18,10 +13,5 @@ public class GameOver : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
-    }
-
-    public void MainMenu()
-    {
-        SceneManager.LoadScene(0);
     }
 }
