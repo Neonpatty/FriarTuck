@@ -27,10 +27,12 @@ public class DoorInteraction : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hitPoint);
+        GameObject gO = hitPoint.transform.gameObject;
+        Outline outline = gO.GetComponent<Outline>();
 
-        if (hitPoint.collider.tag == "DoorInteract")
+        if (gO.tag == "DoorInteract")
         {
-            this.gameObject.GetComponent<Outline>().enabled = true;
+            outline.enabled = true;
 
             if (Input.GetMouseButtonDown(1) && !interacting)
             {
@@ -38,8 +40,7 @@ public class DoorInteraction : MonoBehaviour
                 dropdownMenu.SetActive(true);
                 button = Instantiate(buttonPrefab);
                 button.transform.SetParent(buttonParent);
-                button.GetComponent<Button>().onClick.AddListener(DoorHackSuccess);
-                //dropdownMenu.GetComponent<RectTransform>().position = Camera.main.ScreenToViewportPoint(Input.mousePosition.x,Input.mousePosition.y);
+                button.GetComponent<Button>().onClick.AddListener(DoorHackSuccess);               
             }
         }
         else if (Input.GetMouseButtonDown(1) && interacting)
@@ -50,9 +51,8 @@ public class DoorInteraction : MonoBehaviour
         }
         else
         {
-            this.gameObject.GetComponent<Outline>().enabled = false;
+            outline.enabled = false;
             Debug.Log("No Interactable");
-            return;
         }
 
     }

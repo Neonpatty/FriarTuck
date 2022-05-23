@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 1529480006455498920}
   - component: {fileID: 6347420352894968363}
   - component: {fileID: 1169233944884984269}
+  - component: {fileID: 5387704446098962045}
   m_Layer: 5
   m_Name: InteractButton
   m_TagString: Untagged
@@ -255,3 +256,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!225 &5387704446098962045
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9062573985586158547}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

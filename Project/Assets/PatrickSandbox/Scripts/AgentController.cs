@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(LineRenderer))]
 public class AgentController : MonoBehaviour
@@ -39,7 +40,7 @@ public class AgentController : MonoBehaviour
 
     void PlayerMovement()
     {
-        if (Input.GetMouseButtonDown(0) && isSelected)
+        if (Input.GetMouseButtonDown(0) && isSelected && !IsMouseOverUI())
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -141,6 +142,11 @@ public class AgentController : MonoBehaviour
     {
         isSelected = false;
         gameObject.GetComponent<Outline>().enabled = false;
+    }
+
+    private bool IsMouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 
     private void OnTriggerEnter(Collider other)
