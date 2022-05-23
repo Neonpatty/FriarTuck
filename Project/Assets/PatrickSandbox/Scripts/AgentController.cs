@@ -11,6 +11,8 @@ public class AgentController : MonoBehaviour
     public GameObject clickMarker;
     public Animator playerAnimator;
     public LayerMask block;
+    public GameObject gameOverMenu;
+    public GameObject levelComplete;
 
     [SerializeField] private Transform visualTransform;
     
@@ -139,5 +141,20 @@ public class AgentController : MonoBehaviour
     {
         isSelected = false;
         gameObject.GetComponent<Outline>().enabled = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Enemies")
+        {
+            gameOverMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+
+        if (other.gameObject.tag == "LevelEnd")
+        {
+            levelComplete.gameObject.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 }
