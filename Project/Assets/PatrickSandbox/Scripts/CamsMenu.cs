@@ -13,11 +13,6 @@ public class CamsMenu : MonoBehaviour
 
     private int camIndex = 0;
 
-    private void Awake()
-    {
-            
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +31,14 @@ public class CamsMenu : MonoBehaviour
 
     public void UpdateCams()
     {
+        var allChildren = buttonParent.gameObject.GetComponentsInChildren<Button>();
+        for (var ac = 0; ac < allChildren.Length; ac++)
+        {
+            Destroy(allChildren[ac].gameObject);
+        }
+
+        camIndex = 0;
+
         foreach (Camera cam in cC.cams)
         {
             if (cam != null)

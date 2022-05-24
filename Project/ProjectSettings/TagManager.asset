@@ -13,6 +13,7 @@ TagManager:
   - CameraInteract
   - Enemies
   - LevelEnd
+  - Interact
   layers:
   - Default
   - TransparentFX

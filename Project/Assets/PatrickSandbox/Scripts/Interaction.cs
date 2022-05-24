@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class DoorInteraction : MonoBehaviour
+public class Interaction : MonoBehaviour
 {
     //VARS
     public GameObject dropdownMenu;
@@ -12,6 +13,7 @@ public class DoorInteraction : MonoBehaviour
     [SerializeField] private GameObject interObj;
     [SerializeField] private Transform buttonParent;
     [SerializeField] private CameraCycle cC;
+    [SerializeField] private CamsMenu cM;
 
     private GameObject button;
     private bool interacting = false;
@@ -30,7 +32,7 @@ public class DoorInteraction : MonoBehaviour
         GameObject gO = hitPoint.transform.gameObject;
         Outline outline = gO.GetComponent<Outline>();
 
-        if (gO.tag == "DoorInteract")
+        if (gO.tag == "Interact")
         {
             outline.enabled = true;
 
@@ -39,8 +41,8 @@ public class DoorInteraction : MonoBehaviour
                 interacting = true;
                 dropdownMenu.SetActive(true);
                 button = Instantiate(buttonPrefab);
-                button.transform.SetParent(buttonParent);
-                button.GetComponent<Button>().onClick.AddListener(DoorHackSuccess);               
+                button.transform.SetParent(buttonParent);               
+                button.GetComponent<Button>().onClick.AddListener(HackSuccess);
             }
         }
         else if (Input.GetMouseButtonDown(1) && interacting)
@@ -51,13 +53,12 @@ public class DoorInteraction : MonoBehaviour
         }
         else
         {
-            outline.enabled = false;
             Debug.Log("No Interactable");
         }
 
     }
 
-    public void DoorHackSuccess()
+    public void HackSuccess()
     {
         if (interObj.tag == "Door")
         {
@@ -66,6 +67,15 @@ public class DoorInteraction : MonoBehaviour
                 ani.SetBool("Hacked", true);
             else
                 ani.SetBool("Hacked", false);
+        }
+
+        if (interObj.tag == "MainCamera")
+        {
+            interObj.AddComponent<Camera>();
+            Camera cam = (Camera)interObj.GetComponent<Camera>();
+            cC.cams.Add(cam);
+            cC.ResetCameras();
+            cM.UpdateCams();
         }
 
         interacting = false;

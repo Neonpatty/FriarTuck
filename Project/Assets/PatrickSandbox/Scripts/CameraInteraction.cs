@@ -66,7 +66,7 @@ public class CameraInteraction : MonoBehaviour
             Camera cam = (Camera)interObj.GetComponent<Camera>();
             cC.cams.Add(cam);
             cC.ResetCameras();
-            //cM.UpdateCams();
+            cM.UpdateCams();
         }
 
         interacting = false;
