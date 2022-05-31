@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorHack : MonoBehaviour
 {
-    [SerializeField] private GameObject doorOne;
+    [SerializeField] private GameObject door;
 
     private bool hacked = false;
 
@@ -33,7 +33,7 @@ public class DoorHack : MonoBehaviour
 
     private void HackDoor()
     {
-        Animator ani = doorOne.GetComponent<Animator>();
+        Animator ani = door.GetComponent<Animator>();
         if (ani.GetBool("Hacked") == false)
             ani.SetBool("Hacked", true);
         else
