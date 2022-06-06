@@ -33,7 +33,7 @@ public class CameraCycle : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             currentCamIndex++;
-
+          //  currentCamIndex = (currentCamIndex + 1) % 5;
             //Sets camera at current index to inactive, and sets next camera in index to active
             if (currentCamIndex < cams.Count)
             {
@@ -54,6 +54,16 @@ public class CameraCycle : MonoBehaviour
         //If Q button is pressed change to next camera in array
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            cams[currentCamIndex].gameObject.SetActive(false);
+            currentCamIndex--;
+            if(currentCamIndex < 0)
+                currentCamIndex = cams.Count - 1;
+            //  currentCamIndex = (currentCamIndex + 1) % 5;
+            //Sets camera at current index to inactive, and sets next camera in index to active
+            cams[currentCamIndex].gameObject.SetActive(true);
+            Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + " is active");
+            
+            /*
             currentCamIndex--;
 
             //Sets camera at current index to inactive, and sets next camera in index to active
@@ -64,13 +74,14 @@ public class CameraCycle : MonoBehaviour
                 Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + " is active");
             }
             //When you reach the end of array, go back to beginning
-            else if(currentCamIndex < 0)
+            else if(currentCamIndex <= 0)
             {
                 cams[currentCamIndex + 1].gameObject.SetActive(false);
                 currentCamIndex = cams.Count - 1;
                 cams[currentCamIndex].gameObject.SetActive(true);
                 Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + " is active");
             }
+            */
         }
     }
 
