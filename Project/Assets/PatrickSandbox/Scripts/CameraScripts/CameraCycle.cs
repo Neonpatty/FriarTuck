@@ -57,14 +57,14 @@ public class CameraCycle : MonoBehaviour
             currentCamIndex--;
 
             //Sets camera at current index to inactive, and sets next camera in index to active
-            if (currentCamIndex > cams.Count)
+            if (currentCamIndex > 0)
             {
                 cams[currentCamIndex + 1].gameObject.SetActive(false);
                 cams[currentCamIndex].gameObject.SetActive(true);
                 Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + " is active");
             }
             //When you reach the end of array, go back to beginning
-            else
+            else if(currentCamIndex < 0)
             {
                 cams[currentCamIndex + 1].gameObject.SetActive(false);
                 currentCamIndex = cams.Count - 1;
