@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/MainGame/Scenes/MainMenu.unity
     guid: 66f00ebfa63ae3f4d899b2500d8e3fdf
   - enabled: 1
+    path: Assets/PatrickSandbox/Scenes/TutorialLevel.unity
+    guid: c7be13bd637b60c4ba2d91e5af20d286
+  - enabled: 1
     path: Assets/PatrickSandbox/Scenes/TestLevel.unity
     guid: ae27196bc8749a140889c189a48a36d0
   m_configObjects: {}

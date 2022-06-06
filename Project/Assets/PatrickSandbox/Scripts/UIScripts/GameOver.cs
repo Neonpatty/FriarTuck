@@ -24,4 +24,9 @@ public class GameOver : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(2);
+    }
 }
