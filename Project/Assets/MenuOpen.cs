@@ -15,8 +15,14 @@ public class MenuOpen : MonoBehaviour
     public void OpenMenu()
     {
         if (!isOpen)
+        {
             menuAni.SetBool("clicked", true);
+            isOpen = true;
+        }
         else
+        {
             menuAni.SetBool("clicked", false);
+            isOpen= false;
+        } 
     }
 }

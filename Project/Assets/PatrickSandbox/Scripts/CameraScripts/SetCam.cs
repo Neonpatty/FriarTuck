@@ -20,7 +20,7 @@ public class SetCam : MonoBehaviour
     private void Start()
     {
         nameText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
-        nameText.text = ">//: " + cC.cams[camIndex].GetComponent<Camera>().name;
+        nameText.text = "//: " + cC.cams[camIndex].GetComponent<Camera>().name;
     }
 
     void ChangeCamera()

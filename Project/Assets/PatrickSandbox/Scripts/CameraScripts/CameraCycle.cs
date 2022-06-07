@@ -57,31 +57,11 @@ public class CameraCycle : MonoBehaviour
             cams[currentCamIndex].gameObject.SetActive(false);
             currentCamIndex--;
             if(currentCamIndex < 0)
+            {
                 currentCamIndex = cams.Count - 1;
-            //  currentCamIndex = (currentCamIndex + 1) % 5;
-            //Sets camera at current index to inactive, and sets next camera in index to active
+            }
             cams[currentCamIndex].gameObject.SetActive(true);
             Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + " is active");
-            
-            /*
-            currentCamIndex--;
-
-            //Sets camera at current index to inactive, and sets next camera in index to active
-            if (currentCamIndex > 0)
-            {
-                cams[currentCamIndex + 1].gameObject.SetActive(false);
-                cams[currentCamIndex].gameObject.SetActive(true);
-                Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + " is active");
-            }
-            //When you reach the end of array, go back to beginning
-            else if(currentCamIndex <= 0)
-            {
-                cams[currentCamIndex + 1].gameObject.SetActive(false);
-                currentCamIndex = cams.Count - 1;
-                cams[currentCamIndex].gameObject.SetActive(true);
-                Debug.Log("Camera:" + cams[currentCamIndex].GetComponent<Camera>().name + " is active");
-            }
-            */
         }
     }
 
